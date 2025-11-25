@@ -47,26 +47,17 @@ const Index = () => {
             Игровой сервер
           </p>
 
-          <div className="flex flex-col items-center gap-6">
-            <div className="flex items-center gap-4">
-              <p className="text-3xl font-mono font-bold tracking-wider">
-                {serverAddress}
-              </p>
-              <Button
-                onClick={copyToClipboard}
-                variant="outline"
-                size="icon"
-                className="border-2 border-foreground hover:bg-foreground hover:text-background transition-all"
-              >
-                <Icon name={copied ? "Check" : "Copy"} size={20} />
-              </Button>
-            </div>
-            
+          <div className="flex items-center justify-center gap-4">
+            <p className="text-3xl font-mono font-bold tracking-wider">
+              {serverAddress}
+            </p>
             <Button
-              size="lg"
-              className="text-xl uppercase tracking-widest px-12 py-6 border-2 border-foreground bg-foreground text-background hover:bg-background hover:text-foreground transition-all"
+              onClick={copyToClipboard}
+              variant="outline"
+              size="icon"
+              className="border-2 border-foreground hover:bg-foreground hover:text-background transition-all"
             >
-              Правила
+              <Icon name={copied ? "Check" : "Copy"} size={20} />
             </Button>
           </div>
         </div>
