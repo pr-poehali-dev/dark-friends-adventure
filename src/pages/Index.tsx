@@ -1,7 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import { useState } from "react";
 
 const Index = () => {
+  const [copied, setCopied] = useState(false);
+  const serverAddress = "mc.friendsmine.ru";
+
   const rules = [
     {
       icon: "ShieldBan",
@@ -20,6 +25,12 @@ const Index = () => {
     }
   ];
 
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(serverAddress);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-16 max-w-6xl">
@@ -32,9 +43,32 @@ const Index = () => {
           <h1 className="text-7xl md:text-8xl font-bold tracking-tight mb-6 uppercase">
             FRENDS MINE
           </h1>
-          <p className="text-2xl text-muted-foreground font-light tracking-wide uppercase">
+          <p className="text-2xl text-muted-foreground font-light tracking-wide uppercase mb-12">
             Игровой сервер
           </p>
+
+          <div className="flex flex-col items-center gap-6">
+            <div className="flex items-center gap-4">
+              <p className="text-3xl font-mono font-bold tracking-wider">
+                {serverAddress}
+              </p>
+              <Button
+                onClick={copyToClipboard}
+                variant="outline"
+                size="icon"
+                className="border-2 border-foreground hover:bg-foreground hover:text-background transition-all"
+              >
+                <Icon name={copied ? "Check" : "Copy"} size={20} />
+              </Button>
+            </div>
+            
+            <Button
+              size="lg"
+              className="text-xl uppercase tracking-widest px-12 py-6 border-2 border-foreground bg-foreground text-background hover:bg-background hover:text-foreground transition-all"
+            >
+              Правила
+            </Button>
+          </div>
         </div>
 
         <div className="mb-12 text-center">
